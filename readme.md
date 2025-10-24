@@ -5,8 +5,8 @@
 
 **Completa la siguiente información antes de comenzar:**
 
-- **Nombre completo**: [Nombre del estudiante]
-- **Carrera**: [Carrera del estudianete]
+- **Nombre completo**: Victor Paul Alvarez Alvarez
+- **Carrera**: Desarrolo en Software
 
 ---
 

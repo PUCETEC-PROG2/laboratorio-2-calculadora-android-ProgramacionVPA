@@ -3,7 +3,6 @@ package ec.edu.uisek.calculator
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.LocalTextStyle
@@ -32,7 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ec.edu.uisek.calculator.ui.theme.Purple40
-import ec.edu.uisek.calculator.ui.theme.Purple80
+import ec.edu.uisek.calculator.ui.theme.Red
 import ec.edu.uisek.calculator.ui.theme.UiSekBlue
 
 @Composable
@@ -95,6 +95,17 @@ fun CalculatorGrid(onButtonClick: (String) -> Unit) {
                 onButtonClick(label)
             }
         }
+        item(span = { GridItemSpan(currentLineSpan = 2) }){
+            CalculatorButton(label = "AC") {
+
+            }
+        }
+        item {}
+        item {
+            CalculatorButton(label = "C") {
+
+            }
+        }
     }
 }
 
@@ -106,10 +117,12 @@ fun CalculatorButton(label: String, onClick: () -> Unit) {
             .aspectRatio(1f)
             .fillMaxSize()
             .clip(CircleShape)
-            .background(if (label in listOf("÷", "×", "−", "+", "=", "."))
-                Purple40
-                else
-                UiSekBlue
+            .background(
+                when (label){
+                    in listOf("÷", "×", "−", "+", "=", ".") -> Purple40
+                    in listOf("AC", "C") -> Red
+                    else -> UiSekBlue
+                     }
             )
             .clickable { onClick() },
         contentAlignment = Alignment.Center
