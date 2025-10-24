@@ -20,7 +20,7 @@ sealed class CalculatorEvent {
 
 class CalculatorViewModel : ViewModel() {
 
-    // --- Estado Interno del ViewModel (la lógica) ---
+    // --- Estado Interno del ViewModel (la lógica) -----
     private var number1: String = ""
     private var number2: String = ""
     private var operator: String? = null
